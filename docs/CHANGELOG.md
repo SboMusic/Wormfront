@@ -1,6 +1,6 @@
 # Cronologia
 
-## 0.19.1 - preparazione pubblica
+## 0.20.0 - preparazione pubblica
 
 - Autore e attribuzione di progetto: SboMusic.
 - Sorgenti in src, definizioni in data, test e strumenti separati.
@@ -23,3 +23,4 @@
 - [0.13 - generazione e audio](history/AGGIORNAMENTO_0.13.md)
 - [0.12 - comandi e anteprime](history/AGGIORNAMENTO_0.12.md)
 - [0.11 - espansione del prototipo](history/AGGIORNAMENTO_0.11.md)
+

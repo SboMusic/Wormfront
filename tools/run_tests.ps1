@@ -1,4 +1,4 @@
-param([string]$GodotExe=$env:GODOT_EXE,[string[]]$Suites=@('verify.gd','verify_new_weapons.gd','verify_arsenal_all.gd','verify_upgrade.gd','verify_expansion.gd','verify_random_audio.gd','verify_tall_camera.gd','verify_restyle.gd'))
+param([string]$GodotExe=$env:GODOT_EXE,[string[]]$Suites=@('verify_rebrand.gd','verify.gd','verify_new_weapons.gd','verify_arsenal_all.gd','verify_upgrade.gd','verify_expansion.gd','verify_random_audio.gd','verify_tall_camera.gd','verify_restyle.gd'))
 $ErrorActionPreference='Stop'
 $taskRoot=Split-Path -Parent $PSScriptRoot
 if(-not $GodotExe) {$taskCommand=Get-Command godot,godot4 -ErrorAction SilentlyContinue | Select-Object -First 1; if($taskCommand) {$GodotExe=$taskCommand.Source}}
@@ -19,3 +19,4 @@ try {
   Write-Output "PASS $taskSuite"
  }
 } finally {$env:APPDATA=$taskOldAppData; $env:XDG_DATA_HOME=$taskOldXdg}
+

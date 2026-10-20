@@ -76,9 +76,9 @@ func _ready() -> void:
 	fullscreen_actions.position = Vector2(900, 24)
 	panel.add_child(fullscreen_actions)
 	add_button(fullscreen_actions, "Schermo [F11]", func(): get_parent().toggle_fullscreen())
-	var title := label_at(panel, "CRATERI", Vector2(28, 16), 36)
+	var title := label_at(panel, "WORMFRONT", Vector2(28, 16), 36)
 	title.modulate = Color("58d7da")
-	label_at(panel, "PREPARA LA PARTITA  /  Alpha 0.19.1", Vector2(30, 68), 18)
+	label_at(panel, "PREPARA LA PARTITA  /  Alpha 0.20.0", Vector2(30, 68), 18)
 	label_at(panel, "MAPPA + ARMI + REGOLE", Vector2(582, 84), 13)
 	var package_actions := HBoxContainer.new()
 	package_actions.position = Vector2(582, 108)
@@ -173,14 +173,14 @@ func _ready() -> void:
 	message = label_at(panel, "", Vector2(30, 628), 15)
 	message.size.x = 992
 	message.clip_text = true
-	map_dialog = make_dialog("*.crateri;Mappe Crateri", "Carica mappa", "user://maps")
+	map_dialog = make_dialog("*.wormfront,*.crateri;Mappe Wormfront e precedenti", "Carica mappa", "user://maps")
 	map_dialog.file_selected.connect(load_map)
-	preset_dialog = make_dialog("*.arsenale;Armi e regole Crateri", "Carica armi e regole", "user://arsenals")
+	preset_dialog = make_dialog("*.arsenale;Armi e regole Wormfront", "Carica armi e regole", "user://arsenals")
 	preset_dialog.file_selected.connect(load_preset)
 	DirAccess.make_dir_recursive_absolute("user://packages")
-	package_dialog = make_dialog("*.crateripack;Pacchetti Crateri", "Carica pacchetto completo", "user://packages")
+	package_dialog = make_dialog("*.wormfrontpack,*.crateripack;Pacchetti Wormfront e precedenti", "Carica pacchetto completo", "user://packages")
 	package_dialog.file_selected.connect(load_package)
-	export_dialog = make_dialog("*.crateripack;Pacchetti Crateri", "Esporta mappa, armi e regole", "user://packages", FileDialog.FILE_MODE_SAVE_FILE)
+	export_dialog = make_dialog("*.wormfrontpack,*.crateripack;Pacchetti Wormfront e precedenti", "Esporta mappa, armi e regole", "user://packages", FileDialog.FILE_MODE_SAVE_FILE)
 	export_dialog.file_selected.connect(export_to)
 	set_opened(false)
 
@@ -412,13 +412,13 @@ func open_export() -> void:
 	commit_numbers()
 	if export_button.disabled:
 		return
-	export_dialog.current_file = "La mia partita.crateripack"
+	export_dialog.current_file = "La mia partita.wormfrontpack"
 	export_dialog.popup_centered(Vector2i(820, 480))
 
 func export_to(path: String) -> void:
 	commit_numbers()
-	if not path.to_lower().ends_with(".crateripack"):
-		path += ".crateripack"
+	if not path.to_lower().ends_with(".wormfrontpack"):
+		path += ".wormfrontpack"
 	var error := PackageData.save_package(path, image, spawns, weapons, rules)
 	message.text = "Esportato: " + path.get_file() + ". Puoi copiare questo file su un altro PC." if error.is_empty() else error
 

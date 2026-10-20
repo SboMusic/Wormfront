@@ -4,9 +4,9 @@
 
 Windows x64. Estrai completamente lo ZIP, non avviare il gioco dentro
 l'anteprima dell'archivio. Il pacchetto Setup contiene `Installa.cmd`:
-installa in `%LOCALAPPDATA%\SboMusic\Crateri` e crea il collegamento nel menu Start.
+installa in `%LOCALAPPDATA%\SboMusic\Wormfront` e crea il collegamento nel menu Start.
 Non richiede amministratore. Il pacchetto portatile funziona anche senza
-installazione: `Crateri.exe` e `Crateri.pck` devono rimanere insieme.
+installazione: `Wormfront.exe` e `Wormfront.pck` devono rimanere insieme.
 
 L'installazione non modifica firewall, avvio automatico o impostazioni globali.
 Per rimuoverla apri `Disinstalla.cmd` nella cartella del gioco e conferma.
@@ -87,9 +87,9 @@ sorgente segui [MODDING](MODDING.md). Non c'e ancora un pulsante Duplica.
 
 | File | Contenuto |
 | --- | --- |
-| `.crateri` | Terreno e due ancoraggi |
+| `.wormfront` | Terreno e due ancoraggi |
 | `.arsenale` | Armi e regole |
-| `.crateripack` | Mappa, armi e configurazione iniziale |
+| `.wormfrontpack` | Mappa, armi e configurazione iniziale |
 
 I pacchetti non salvano un turno in corso. Scambia questi file con altri
 giocatori; non serve inviare la cartella dei dati personali.
@@ -97,12 +97,12 @@ I formati nuovi possono richiedere una versione recente del gioco.
 
 ## Dati e problemi comuni
 
-Godot salva preferenze e creazioni in `%APPDATA%\Godot\app_userdata\Crateri`.
-L'edizione precedente usava la sottocartella `Crateri - prototipo`: puoi
-recuperare da li i file desiderati attraverso le finestre Carica.
+Godot salva preferenze e creazioni in `%APPDATA%\Godot\app_userdata\Wormfront`.
+Le edizioni precedenti usavano cartelle diverse: puoi
+recuperare i file desiderati attraverso le finestre Carica, scegliendo la cartella dati della vecchia installazione. I formati precedenti restano leggibili.
 I test degli sviluppatori usano cartelle isolate e non i tuoi salvataggi.
 
-- Se l'eseguibile non trova i dati, estrai tutto e verifica `Crateri.pck`.
+- Se l'eseguibile non trova i dati, estrai tutto e verifica `Wormfront.pck`.
 - Se non puoi sparare, controlla munizioni, timer, turno e pannelli aperti.
 - Se il teletrasporto non parte, indica un punto libero sopra una superficie.
 - Se una squadra non puo partire, riduci i membri o allarga gli appoggi.
@@ -110,3 +110,4 @@ I test degli sviluppatori usano cartelle isolate e non i tuoi salvataggi.
 
 Il gioco e un'alpha: descrivi mappa, arma e passaggi per riprodurre un problema,
 indicando la versione e senza pubblicare dati personali o l'intera cartella utente.
+

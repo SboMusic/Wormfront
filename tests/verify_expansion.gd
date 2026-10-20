@@ -73,7 +73,7 @@ func verify() -> void:
 	check(game.map_editor.image.get_pixel(1920, 250).a > 0.5, "Editor dipinge nella meta destra")
 	game.map_editor.play_map()
 	check(game.W == 2200 and game.solid(Vector2(1920, 250)), "Applicazione mappa grande")
-	var path := "user://verify-expansion.crateripack"
+	var path := "user://verify-expansion.wormfrontpack"
 	check(game.menu.PackageData.save_package(path, game.map_template, game.template_spawns, game.weapons, game.rules).is_empty(), "Salvataggio campo grande")
 	var saved: Dictionary = game.menu.PackageData.load_package(path)
 	check(saved["error"].is_empty() and saved["image"].get_width() == 2200 and saved["weapons"].size() == 36 and saved["rules"]["ai_level"] == 2, "Pacchetto preserva dimensioni armi difficolta")

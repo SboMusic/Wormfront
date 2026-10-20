@@ -214,7 +214,7 @@ func verify_weapons(game) -> void:
 	game.update_projectile(0.1)
 	assert(not game.flying and game.settling, "Un tiro fuori mappa non blocca il turno")
 	game.reset_game()
-	print("PASS: scelta armi, validazione dati, rimbalzi, miccia, danni, crateri, fuori mappa, riavvio granata")
+	print("PASS: scelta armi, validazione dati, rimbalzi, miccia, danni, wormfront, fuori mappa, riavvio granata")
 
 func verify_maps(game) -> void:
 	var map_data = load("res://src/data/map_data.gd")
@@ -245,7 +245,7 @@ func verify_maps(game) -> void:
 	assert(not editor.place_spawn(1, Vector2(450, 230)), "Partenze sovrapposte rifiutate")
 	var expected: PackedVector2Array = editor.spawns.duplicate()
 	assert(map_data.validate(editor.image, expected).is_empty())
-	var path := "user://verify-map.crateri"
+	var path := "user://verify-map.wormfront"
 	assert(map_data.save_map(path, editor.image, expected).is_empty(), "Salvataggio mappa")
 	var loaded: Dictionary = map_data.load_map(path)
 	assert(loaded["error"].is_empty(), "Caricamento mappa")
@@ -266,7 +266,7 @@ func verify_maps(game) -> void:
 	editor.load_from(path)
 	assert(editor.spawns == expected)
 	# Un caricamento fallito non deve sostituire la bozza.
-	var invalid_path := "user://verify-map-invalid.crateri"
+	var invalid_path := "user://verify-map-invalid.wormfront"
 	var file := FileAccess.open(invalid_path, FileAccess.WRITE)
 	file.store_string("{file interrotto")
 	file.close()
@@ -276,7 +276,7 @@ func verify_maps(game) -> void:
 	# Un PNG con dimensioni diverse va rifiutato prima della decompressione.
 	var tiny := Image.create_empty(16, 16, false, Image.FORMAT_RGBA8)
 	file = FileAccess.open(invalid_path, FileAccess.WRITE)
-	file.store_string(JSON.stringify({"format": "crateri-map", "version": 1, "terrain_png": Marshalls.raw_to_base64(tiny.save_png_to_buffer()), "spawns": [[0, 0], [0, 0]]}))
+	file.store_string(JSON.stringify({"format": "wormfront-map", "version": 1, "terrain_png": Marshalls.raw_to_base64(tiny.save_png_to_buffer()), "spawns": [[0, 0], [0, 0]]}))
 	file.close()
 	assert(not map_data.load_map(invalid_path)["error"].is_empty(), "Dimensioni incompatibili rifiutate")
 	# Una mappa senza supporto non può essere salvata o giocata.
@@ -357,7 +357,7 @@ func verify_arsenal(game) -> void:
 	editor.load_from(invalid)
 	assert(editor.draft_rules["starting_health"] == 200, "Un file danneggiato conserva la bozza")
 	file = FileAccess.open(invalid, FileAccess.WRITE)
-	file.store_string(JSON.stringify({"format": "crateri-arsenal", "version": 1, "weapons": [{}], "rules": {}}))
+	file.store_string(JSON.stringify({"format": "wormfront-arsenal", "version": 1, "weapons": [{}], "rules": {}}))
 	file.close()
 	assert(not data.load_preset(invalid)["error"].is_empty(), "Configurazione incompleta rifiutata")
 	var template: PackedByteArray = game.map_template.get_data()
@@ -463,7 +463,7 @@ func verify_teams(game) -> void:
 	assert(data.save_preset(path, game.weapons, settings).is_empty())
 	assert(data.load_preset(path)["rules"]["team_size"] == 3, "Numero di personaggi nel salvataggio")
 	var file := FileAccess.open(path, FileAccess.WRITE)
-	file.store_string(JSON.stringify({"format": "crateri-arsenal", "version": 1, "weapons": game.weapons, "rules": {"starting_health": 100, "turn_seconds": 35, "self_damage": true}}))
+	file.store_string(JSON.stringify({"format": "wormfront-arsenal", "version": 1, "weapons": game.weapons, "rules": {"starting_health": 100, "turn_seconds": 35, "self_damage": true}}))
 	file.close()
 	assert(data.load_preset(path)["rules"]["team_size"] == 1, "Configurazioni precedenti compatibili")
 	DirAccess.remove_absolute(path)
@@ -520,9 +520,9 @@ func verify_menu(game) -> void:
 	assert(game.units.size() == 2 and game.rules["starting_health"] == 100, "Le scelte del menu non modificano la partita in pausa")
 	var terrain: Image = game.map_template.duplicate()
 	terrain.set_pixel(500, 300, Color.WHITE)
-	var map_path := "user://verify-menu.crateri"
+	var map_path := "user://verify-menu.wormfront"
 	var preset_path := "user://verify-menu.arsenale"
-	var bad_path := "user://verify-menu-invalid.crateri"
+	var bad_path := "user://verify-menu-invalid.wormfront"
 	assert(map_data.save_map(map_path, terrain, game.template_spawns).is_empty())
 	var definitions: Array[Dictionary] = game.weapons.duplicate(true)
 	definitions[0]["name"] = "Menu test"
@@ -618,8 +618,8 @@ func verify_packages(game) -> void:
 	definitions[1]["color"] = "88aaff"
 	var settings: Dictionary = game.ArsenalData.sanitize_rules({"team_size": 3, "starting_health": 180, "turn_seconds": 55, "self_damage": false})
 	menu.prepare(terrain, game.template_spawns, definitions, settings)
-	var path := "user://verify-package.crateripack"
-	var invalid := "user://verify-package-invalid.crateripack"
+	var path := "user://verify-package.wormfrontpack"
+	var invalid := "user://verify-package-invalid.wormfrontpack"
 	menu.export_to("user://verify-package")
 	assert(FileAccess.file_exists(path), "Estensione del pacchetto aggiunta all'esportazione")
 	var result: Dictionary = package.load_package(path)
@@ -643,7 +643,7 @@ func verify_packages(game) -> void:
 	menu.load_package(path)
 	assert(game.map_template.get_data() == paused_terrain and game.rules == original_rules, "Caricare il pacchetto non cambia la partita in pausa")
 	assert(menu.map_name == path.get_file() and menu.preset_name == path.get_file())
-	var valid_data := {"format": "crateri-package", "version": 1, "map": package.MapData.encode_map(terrain, game.template_spawns), "arsenal": package.ArsenalData.encode_preset(definitions, settings)}
+	var valid_data := {"format": "wormfront-package", "version": 1, "map": package.MapData.encode_map(terrain, game.template_spawns), "arsenal": package.ArsenalData.encode_preset(definitions, settings)}
 	var file := FileAccess.open(invalid, FileAccess.WRITE)
 	file.store_string("{broken")
 	file.close()
@@ -684,7 +684,7 @@ func verify_packages(game) -> void:
 	assert(not package.load_package(invalid)["error"].is_empty(), "File troppo grande rifiutato")
 	menu.start_match()
 	assert(game.units.size() == 6 and game.units[0]["hp"] == 180 and game.solid(Vector2(500, 300)), "Avvio dalla selezione del pacchetto")
-	# L'esportazione non è un salvataggio dei crateri e delle vite della partita.
+	# L'esportazione non è un salvataggio dei wormfront e delle vite della partita.
 	game.explode(Vector2(500, 300))
 	game.units[0]["hp"] = 1
 	game.open_menu()

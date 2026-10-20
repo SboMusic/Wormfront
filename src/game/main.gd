@@ -757,7 +757,7 @@ func update_hud() -> void:
 	if notice_time > 0:
 		hud.text += "\n" + notice
 	if not winner.is_empty():
-		hud.text = "CRATERI\n" + winner + "\nR: ricomincia  ·  Esc: menu"
+		hud.text = "WORMFRONT\n" + winner + "\nR: ricomincia  ·  Esc: menu"
 
 func _draw() -> void:
 	terrain_sprite.visible = not (editor_active() or menu.opened)

@@ -208,7 +208,7 @@ func make_dialog(mode: FileDialog.FileMode) -> FileDialog:
 	dialog.title = "Salva armi e regole" if mode == FileDialog.FILE_MODE_SAVE_FILE else "Carica armi e regole"
 	dialog.get_ok_button().text = "Salva" if mode == FileDialog.FILE_MODE_SAVE_FILE else "Carica"
 	dialog.get_cancel_button().text = "Annulla"
-	dialog.filters = PackedStringArray(["*.arsenale;Armi e regole Crateri"])
+	dialog.filters = PackedStringArray(["*.arsenale;Armi e regole Wormfront"])
 	dialog.current_dir = ProjectSettings.globalize_path("user://arsenals")
 	add_child(dialog)
 	return dialog

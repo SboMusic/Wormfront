@@ -44,7 +44,7 @@ static func save_preset(path: String, weapons: Array[Dictionary], rules: Diction
 	return ""
 
 static func encode_preset(weapons: Array[Dictionary], rules: Dictionary) -> Dictionary:
-	return {"format": "crateri-arsenal", "version": 1, "weapons": WeaponCatalog.sanitize(weapons), "rules": sanitize_rules(rules)}
+	return {"format": "wormfront-arsenal", "version": 1, "weapons": WeaponCatalog.sanitize(weapons), "rules": sanitize_rules(rules)}
 
 static func load_preset(path: String) -> Dictionary:
 	var file := FileAccess.open(path, FileAccess.READ)
@@ -58,8 +58,8 @@ static func load_preset(path: String) -> Dictionary:
 	return decode_preset(parser.data)
 
 static func decode_preset(data: Variant) -> Dictionary:
-	if not data is Dictionary or data.get("format") != "crateri-arsenal" or data.get("version") != 1:
-		return {"error": "Questo file non è una configurazione Crateri compatibile."}
+	if not data is Dictionary or data.get("format") not in ["wormfront-arsenal", "crateri-arsenal"] or data.get("version") != 1:
+		return {"error": "Questo file non è una configurazione Wormfront compatibile."}
 	var weapons: Variant = data.get("weapons")
 	if not weapons is Array or weapons.size() < 2 or weapons.size() > 64 or not weapons[0] is Dictionary or not weapons[1] is Dictionary or not data.get("rules") is Dictionary:
 		return {"error": "La configurazione deve contenere da 2 a 64 armi e le regole."}

@@ -110,13 +110,13 @@ func verify() -> void:
 		if unit["team"] == 0 and unit["hp"] < 100:
 			hurt = true
 	check(hurt, "Il tiro IA danneggia un avversario in arena")
-	var path := "user://verify-upgrade.crateripack"
+	var path := "user://verify-upgrade.wormfrontpack"
 	check(game.menu.PackageData.save_package(path, game.map_template, game.template_spawns, game.weapons, game.rules).is_empty(), "Salvataggio pacchetto esteso")
 	var package: Dictionary = game.menu.PackageData.load_package(path)
 	check(package["error"].is_empty() and package["weapons"].size() == 36 and package["rules"]["ai_enabled"], "24 armi e IA conservate nel pacchetto")
 	check(package["weapons"][6]["kind"] == "drill" and package["weapons"][2]["ammo"] == 2, "Comportamenti e scorte iniziali conservati")
 	DirAccess.remove_absolute(path)
-	var legacy: Dictionary = game.ArsenalData.decode_preset({"format":"crateri-arsenal", "version":1, "weapons":[game.weapons[0],game.weapons[1]], "rules":{"starting_health":100}})
+	var legacy: Dictionary = game.ArsenalData.decode_preset({"format":"wormfront-arsenal", "version":1, "weapons":[game.weapons[0],game.weapons[1]], "rules":{"starting_health":100}})
 	check(legacy["error"].is_empty() and legacy["weapons"].size() == 2, "Compatibilità configurazioni precedenti")
 	game.reset_game()
 	var rewards: Array[int] = []

@@ -103,7 +103,7 @@ func make_dialog(mode: FileDialog.FileMode) -> FileDialog:
 	dialog.title = "Salva mappa" if mode == FileDialog.FILE_MODE_SAVE_FILE else "Carica mappa"
 	dialog.get_ok_button().text = "Salva" if mode == FileDialog.FILE_MODE_SAVE_FILE else "Carica"
 	dialog.get_cancel_button().text = "Annulla"
-	dialog.filters = PackedStringArray(["*.crateri;Mappe Crateri"])
+	dialog.filters = PackedStringArray(["*.wormfront,*.crateri;Mappe Wormfront e precedenti"])
 	dialog.current_dir = ProjectSettings.globalize_path("user://maps")
 	add_child(dialog)
 	return dialog
@@ -267,12 +267,12 @@ func open_save() -> void:
 	if not error.is_empty():
 		message.text = "Prima di salvare: " + error
 		return
-	save_dialog.current_file = "La mia mappa.crateri"
+	save_dialog.current_file = "La mia mappa.wormfront"
 	save_dialog.popup_centered(Vector2i(820, 480))
 
 func save_to(path: String) -> void:
-	if not path.to_lower().ends_with(".crateri"):
-		path += ".crateri"
+	if not path.to_lower().ends_with(".wormfront"):
+		path += ".wormfront"
 	var error := MapData.save_map(path, image, spawns)
 	message.text = "Salvata: " + path.get_file() if error.is_empty() else error
 

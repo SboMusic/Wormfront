@@ -72,7 +72,7 @@ static func save_map(path: String, image: Image, spawns: PackedVector2Array) -> 
 	return ""
 
 static func encode_map(image: Image, spawns: PackedVector2Array) -> Dictionary:
-	return {"format": "crateri-map", "version": 1, "terrain_png": Marshalls.raw_to_base64(image.save_png_to_buffer()), "spawns": [[spawns[0].x, spawns[0].y], [spawns[1].x, spawns[1].y]]}
+	return {"format": "wormfront-map", "version": 1, "terrain_png": Marshalls.raw_to_base64(image.save_png_to_buffer()), "spawns": [[spawns[0].x, spawns[0].y], [spawns[1].x, spawns[1].y]]}
 
 static func load_map(path: String) -> Dictionary:
 	var file := FileAccess.open(path, FileAccess.READ)
@@ -86,8 +86,8 @@ static func load_map(path: String) -> Dictionary:
 	return decode_map(parser.data)
 
 static func decode_map(data: Variant) -> Dictionary:
-	if not data is Dictionary or data.get("format") != "crateri-map" or data.get("version") != 1:
-		return {"error": "Questo file non è una mappa Crateri compatibile."}
+	if not data is Dictionary or data.get("format") not in ["wormfront-map", "crateri-map"] or data.get("version") != 1:
+		return {"error": "Questo file non è una mappa Wormfront compatibile."}
 	var encoded: Variant = data.get("terrain_png")
 	var entries: Variant = data.get("spawns")
 	if not encoded is String or not entries is Array or entries.size() != 2:

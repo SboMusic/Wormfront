@@ -1,4 +1,4 @@
-# Modificare Crateri
+# Modificare Wormfront
 
 ## Avvio rapido per chi sviluppa
 
@@ -66,7 +66,7 @@ anteprima, UI, salvataggi, IA e test. Gli effetti aggiuntivi sono in
 Il menu e l'editor scrivono le regole normalizzate da `src/data/arsenal_data.gd`.
 Salute 1-300, turni 10-120 secondi, squadra 1-4, difficolta 0-2;
 self_damage, ai_enabled, supplies e scatter_spawns sono booleani.
-Le configurazioni `.arsenale` hanno format `crateri-arsenal`, version 1,
+Le configurazioni `.arsenale` hanno format `wormfront-arsenal`, version 1,
 un array weapons e un oggetto rules. Conviene generare il primo file dall'editor.
 
 ## Mappe
@@ -80,13 +80,13 @@ Il modo piu semplice e F2. Per mappe procedurali:
 - `src/world/team_spawns.gd`: disposizione della squadra e partenze mescolate.
 
 Una mappa e un'immagine RGBA: alpha trasparente significa vuoto, alpha pieno
-significa terreno. I crateri modificano questa stessa maschera. Il materiale
+significa terreno. I wormfront modificano questa stessa maschera. Il materiale
 visivo non deve introdurre superfici solide che la maschera non contiene.
 Dimensioni ammesse: larghezze 1100/2200/3300 e altezze 700/1100.
 Il mare e legato all'altezza del mondo; conserva spazio superiore, bordi
 e appoggi validi. Verifica entrambe le squadre anche con quattro membri.
 
-I `.crateri` contengono format `crateri-map`, version 1, terreno PNG in base64
+I `.wormfront` contengono format `wormfront-map`, version 1, terreno PNG in base64
 e due coordinate di spawn. Non caricano script o percorsi esterni.
 Modifica i formati solo aggiungendo migrazioni e prove di compatibilita.
 

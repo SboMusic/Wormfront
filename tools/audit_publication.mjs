@@ -21,9 +21,9 @@ function walk(dir) {
   if(entry.isDirectory()) {walk(full);continue;}
   if(!entry.isFile()) continue;
   count++; const bytes=fs.readFileSync(full), legal=rel.split(path.sep).includes('licenses');
-  // Unmodified official Godot 4.5.1 Windows release template; vendor build paths
+  // Godot 4.5.1 template with verified icon/version resources only; vendor build paths
   // and third-party author names are not personal data of the game publisher.
-  if(entry.name==='Crateri.exe' && crypto.createHash('sha256').update(bytes).digest('hex')==='78ccc576e8f8bffd7ef6ad6f36ebd72a41e609a1052225a55b3407c96ea84065') continue;
+  if(entry.name==='Wormfront.exe' && crypto.createHash('sha256').update(bytes).digest('hex')==='76f869c1aeb2ced6a90c42a599e22ddeba47db3847dc728b268d80cff3a425d5') continue;
   inspect(bytes.toString('utf8'),rel,legal); inspect(bytes.toString('utf16le'),rel,legal);
   if(entry.name.endsWith('.png')) {
    for(let offset=8;offset+12<=bytes.length;) {
@@ -39,3 +39,4 @@ function walk(dir) {
 walk(root);
 console.log(JSON.stringify({files:count,findings},null,2));
 process.exitCode=findings.length?1:0;
+

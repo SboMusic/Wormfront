@@ -1,4 +1,4 @@
-# Crateri 0.12
+# Wormfront 0.12
 
 Richieste implementate: zoom persistente durante la sessione e il riavvio della
 partita; M per arsenale; destro trascinato per potenza; sinistro tenuto per carica

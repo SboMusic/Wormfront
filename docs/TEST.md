@@ -14,7 +14,7 @@ Godot possono terminare il processo con zero anche dopo un assert.
 | verify_expansion.gd | Mappe, partenze, difficolta, arsenale e input |
 | verify_random_audio.gd | Semi, variazioni geometriche, appoggi, pacchetti e audio |
 | verify_tall_camera.gd | Mondo alto, camera stabile, file e coordinate dell'editor |
-| verify_restyle.gd | Immagini, maschera fisica, texture, crateri e apertura editor |
+| verify_restyle.gd | Immagini, maschera fisica, texture, wormfront e apertura editor |
 
 `verify_display.gd` richiede una finestra e verifica piu risoluzioni, fino al
 4K, clic reali, aiuto, F11 e audio. Gli altri script visivi in tests sono
@@ -33,3 +33,6 @@ Prima di una release provare inoltre installazione/disinstallazione in
 una destinazione temporanea, pacchetto estratto e integrita degli archivi.
 Le prove automatiche non dimostrano il bilanciamento di ogni seme casuale
 ne il funzionamento su ogni GPU o su un secondo PC fisico.
+
+La suite verify_rebrand.gd verifica il nuovo nome e la lettura dei vecchi formati.
+

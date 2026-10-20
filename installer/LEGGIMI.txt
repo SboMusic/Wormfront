@@ -1,10 +1,10 @@
-CRATERI 0.19.1 - SboMusic
+WORMFRONT 0.20.0 - SboMusic
 
 INSTALLAZIONE: estrai tutto lo ZIP Setup e apri Installa.cmd. Non richiede privilegi amministratore. Per rimuovere il gioco usa Disinstalla.cmd nella cartella installata; i salvataggi vengono conservati.
 
 Windows x64
 
-Apri Crateri.exe lasciando Crateri.pck accanto. Estrai tutta la cartella ZIP.
+Apri Wormfront.exe lasciando Wormfront.pck accanto. Estrai tutta la cartella ZIP.
 
 NOVITA
 Tre sfondi scelti casualmente a ogni avvio, senza ripetizioni immediate.
@@ -30,7 +30,7 @@ F11/Alt+Invio: schermo/finestra. A-/A+ nei pulsanti: dimensione testi.
 F2: editor mappe. F3: mappa iniziale. F4: editor armi e regole.
 
 Rigenera crea nuove strutture. Le mappe gia salvate mantengono le loro forme.
-Mappe .crateri, armi/regole .arsenale, pacchetti .crateripack.
+Mappe .wormfront, armi/regole .arsenale, pacchetti .wormfrontpack.
 I pacchetti conservano configurazione iniziale e terreno, non la partita in corso.
 Le vecchie mappe sono compatibili; i nuovi tipi di armi richiedono questa versione.
 L'IA usa ancora il pianificatore balistico e delle armi istantanee.

@@ -78,7 +78,7 @@ func run() -> void:
 	game.select_weapon(33)
 	game.shoot()
 	check(game.units[1]["hp"]==75 and game.units[1]["vel"].x>400,"Mazza applica danno e spinta ravvicinata")
-	var decoded: Dictionary=game.menu.PackageData.decode_package({"format":"crateri-package","version":1,"map":game.TeamSpawns.MapData.encode_map(game.map_template,game.template_spawns),"arsenal":game.ArsenalData.encode_preset(game.weapons,game.rules)})
+	var decoded: Dictionary=game.menu.PackageData.decode_package({"format":"wormfront-package","version":1,"map":game.TeamSpawns.MapData.encode_map(game.map_template,game.template_spawns),"arsenal":game.ArsenalData.encode_preset(game.weapons,game.rules)})
 	check(decoded["error"].is_empty() and decoded["weapons"].size()==36 and decoded["weapons"][27]["cluster"]==5 and decoded["weapons"][25]["kind"]=="homing","Pacchetto conserva le nuove meccaniche")
 	game.audio.stop_all()
 	await create_timer(.2).timeout

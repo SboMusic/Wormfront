@@ -1,6 +1,8 @@
-param([string]$GodotExe=$env:GODOT_EXE,[string]$TemplateDir,[switch]$DebugBuild)
+param([string]$GodotExe=$env:GODOT_EXE,[string]$TemplateDir,[string]$RcEditExe=$env:RCEDIT_EXE,[switch]$DebugBuild)
 $ErrorActionPreference='Stop'
 $taskRoot=Split-Path -Parent $PSScriptRoot
+if(-not $RcEditExe -or -not (Test-Path -LiteralPath $RcEditExe)) {throw 'Indica RCEdit ufficiale con -RcEditExe o RCEDIT_EXE per icona e metadati Windows.'}
+& (Join-Path $PSScriptRoot 'make_icon.ps1')
 if(-not $GodotExe) { $taskCommand=Get-Command godot,godot4 -ErrorAction SilentlyContinue | Select-Object -First 1; if($taskCommand) {$GodotExe=$taskCommand.Source} }
 if(-not $GodotExe -or -not (Test-Path -LiteralPath $GodotExe)) {throw 'Indica Godot 4.5.1 con -GodotExe oppure GODOT_EXE.'}
 $taskVersion=& $GodotExe --version
@@ -14,7 +16,7 @@ foreach($taskFile in @('windows_release_x86_64.exe','windows_debug_x86_64.exe'))
  if(Test-Path -LiteralPath $taskFrom) {if([IO.Path]::GetFullPath($taskFrom) -ne [IO.Path]::GetFullPath($taskTo)) {Copy-Item -LiteralPath $taskFrom -Destination $taskTo -Force}}
  if(-not (Test-Path -LiteralPath $taskTo)) {throw "Installa i template ufficiali 4.5.1 o passa -TemplateDir: $taskFile"}
 }
-$taskDist=Join-Path $taskRoot 'dist/Crateri-0.19.1-Windows-x64'
+$taskDist=Join-Path $taskRoot 'dist/Wormfront-0.20.0-Windows-x64'
 New-Item -ItemType Directory $taskDist -Force | Out-Null
 $taskOldAppData=$env:APPDATA
 try {
@@ -23,9 +25,13 @@ try {
  & $GodotExe --headless --path $taskRoot --editor --import --quit
  if($LASTEXITCODE -ne 0) {throw 'Importazione non riuscita.'}
  $taskMode=if($DebugBuild) {'--export-debug'} else {'--export-release'}
- & $GodotExe --headless --path $taskRoot $taskMode 'Windows Desktop' (Join-Path $taskDist 'Crateri.exe')
+ & $GodotExe --headless --path $taskRoot $taskMode 'Windows Desktop' (Join-Path $taskDist 'Wormfront.exe')
  if($LASTEXITCODE -ne 0) {throw 'Esportazione non riuscita.'}
- Copy-Item -LiteralPath (Join-Path $taskRoot 'licenses') -Destination $taskDist -Recurse -Force
+ & $RcEditExe (Join-Path $taskDist 'Wormfront.exe') --set-icon (Join-Path $taskRoot 'assets/icon.ico') --set-version-string ProductName Wormfront --set-version-string FileDescription 'Wormfront - SboMusic' --set-version-string CompanyName SboMusic --set-version-string InternalName Wormfront --set-version-string OriginalFilename Wormfront.exe --set-version-string LegalCopyright 'Copyright (c) 2026 SboMusic' --set-file-version 0.20.0.0 --set-product-version 0.20.0.0
+ if($LASTEXITCODE -ne 0) {throw 'Applicazione icona e metadati non riuscita.'}
+ New-Item -ItemType Directory (Join-Path $taskDist 'licenses') -Force | Out-Null
+ Get-ChildItem -LiteralPath (Join-Path $taskRoot 'licenses') -File | ForEach-Object {Copy-Item -LiteralPath $_.FullName -Destination (Join-Path $taskDist 'licenses') -Force}
+ Copy-Item -LiteralPath (Join-Path $taskRoot 'assets/icon.ico') -Destination (Join-Path $taskDist 'Wormfront.ico') -Force
  foreach($taskFile in @('LICENSE','AUTHORS.md')) {Copy-Item -LiteralPath (Join-Path $taskRoot $taskFile) -Destination $taskDist -Force}
  Copy-Item -LiteralPath (Join-Path $taskRoot 'installer/LEGGIMI.txt') -Destination $taskDist -Force
  Copy-Item -LiteralPath (Join-Path $taskRoot 'docs/GUIDA_UTENTE.md') -Destination $taskDist -Force

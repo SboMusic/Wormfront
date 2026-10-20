@@ -23,7 +23,7 @@ func capture() -> void:
 	await process_frame
 	await RenderingServer.frame_post_draw
 	root.get_texture().get_image().save_png("res://verifiche/esporta-pacchetto-0.8.png")
-	var path := "user://verify-visual-package.crateripack"
+	var path := "user://verify-visual-package.wormfrontpack"
 	menu.export_dialog.file_selected.emit(path)
 	menu.export_dialog.hide()
 	assert(FileAccess.file_exists(path))

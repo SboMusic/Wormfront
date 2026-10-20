@@ -1,4 +1,4 @@
-# Come e stato sviluppato Crateri
+# Come e stato sviluppato Wormfront
 
 Progetto di SboMusic, nato come prototipo originale di artiglieria 2D per PC.
 Motore Godot 4.5.1 Standard e GDScript; prima piattaforma Windows x64.
@@ -8,7 +8,7 @@ Le meccaniche di giochi a turni sono un riferimento, non una fonte di asset.
 
 Ogni incremento introduce un gruppo di funzionalita, seguito da prove sul
 sorgente, esportazione e prova del programma Windows. Il prototipo iniziale
-usava una piccola mappa, due personaggi, movimento, un'arma e crateri.
+usava una piccola mappa, due personaggi, movimento, un'arma e wormfront.
 Sono arrivati squadre, editor, formati di file e pacchetti; poi IA, casse,
 arsenale illustrato, mouse, camera e mondi piu grandi.
 
@@ -26,7 +26,7 @@ Audio ed effetti sonori sono sintetizzati dal codice.
   margini e uscite laterali, terreno alto e camera stabile durante i tiri.
 - 0.18: prima scena del restyling, personaggio, armi illustrate e tema UI.
 - 0.19: nuove architetture, tre materiali/sfondi e 36 armi.
-- 0.19.1: riordino dei sorgenti, attribuzione SboMusic, guide, installer,
+- 0.20.0: riordino dei sorgenti, attribuzione SboMusic, guide, installer,
   licenza e preparazione della distribuzione pubblica.
 
 La [cronologia](CHANGELOG.md) rimanda alle note storiche conservate.

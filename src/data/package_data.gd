@@ -13,7 +13,7 @@ static func save_package(path: String, image: Image, spawns: PackedVector2Array,
 	var layout := TeamSpawns.plan(image, spawns, int(settings["team_size"]))
 	if not layout["error"].is_empty():
 		return layout["error"]
-	var data := {"format": "crateri-package", "version": 1, "map": MapData.encode_map(image, spawns), "arsenal": ArsenalData.encode_preset(weapons, settings)}
+	var data := {"format": "wormfront-package", "version": 1, "map": MapData.encode_map(image, spawns), "arsenal": ArsenalData.encode_preset(weapons, settings)}
 	var contents := JSON.stringify(data)
 	if contents.to_utf8_buffer().size() > MAX_BYTES:
 		return "Il pacchetto supera il limite di 9 MB."
@@ -42,8 +42,8 @@ static func load_package(path: String) -> Dictionary:
 	return decode_package(parser.data)
 
 static func decode_package(data: Variant) -> Dictionary:
-	if not data is Dictionary or data.get("format") != "crateri-package" or data.get("version") != 1:
-		return {"error": "Questo file non è un pacchetto Crateri compatibile."}
+	if not data is Dictionary or data.get("format") not in ["wormfront-package", "crateri-package"] or data.get("version") != 1:
+		return {"error": "Questo file non è un pacchetto Wormfront compatibile."}
 	var map := MapData.decode_map(data.get("map"))
 	if not map["error"].is_empty():
 		return {"error": "Mappa del pacchetto: " + map["error"]}

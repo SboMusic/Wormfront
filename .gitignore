@@ -14,8 +14,8 @@ dist/
 *.pfx
 *.pem
 *.key
-*.crateri
+*.wormfront
 *.arsenale
-*.crateripack
+*.wormfrontpack
 .DS_Store
 Thumbs.db

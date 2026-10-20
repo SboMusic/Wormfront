@@ -47,7 +47,7 @@ func verify() -> void:
 	game.menu.start_match()
 	for unit in game.units:
 		check(game.TeamSpawns.MapData.spawn_error(game.ground, unit["pos"]).is_empty(), "Partita usa appoggi della mappa generata")
-	var path := "user://verify-random-audio.crateripack"
+	var path := "user://verify-random-audio.wormfrontpack"
 	check(game.menu.PackageData.save_package(path, game.map_template, game.template_spawns, game.weapons, game.rules).is_empty(), "Salvataggio nuova mappa")
 	var loaded: Dictionary = game.menu.PackageData.load_package(path)
 	check(loaded["error"].is_empty() and loaded["image"].get_data() == game.map_template.get_data(), "Il pacchetto conserva il terreno esatto senza rigenerarlo")

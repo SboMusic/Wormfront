@@ -56,7 +56,7 @@ func verify() -> void:
 		fail("Editor armi non funzionante nell'esportazione.")
 		return
 	game.open_menu()
-	var package_path := "user://verify-export-only.crateripack"
+	var package_path := "user://verify-export-only.wormfrontpack"
 	game.menu.export_to(package_path)
 	game.menu.use_default_map()
 	game.menu.use_default_preset()

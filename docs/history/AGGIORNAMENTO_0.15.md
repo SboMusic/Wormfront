@@ -1,4 +1,4 @@
-# Crateri 0.15 - campo e bordi
+# Wormfront 0.15 - campo e bordi
 
 Il campo non puo piu essere ridotto fino a diventare un riquadro centrale:
 lo zoom minimo segue la larghezza della finestra con piccoli margini laterali.

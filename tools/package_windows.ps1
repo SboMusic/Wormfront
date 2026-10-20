@@ -1,16 +1,16 @@
 param()
 $ErrorActionPreference='Stop'
 $taskRoot=Split-Path -Parent $PSScriptRoot
-$taskName='Crateri-0.19.1-Windows-x64'
+$taskName='Wormfront-0.20.0-Windows-x64'
 $taskPortable=Join-Path $taskRoot "dist/$taskName"
-if(-not (Test-Path -LiteralPath (Join-Path $taskPortable 'Crateri.exe'))) {throw 'Esegui prima build_windows.ps1.'}
+if(-not (Test-Path -LiteralPath (Join-Path $taskPortable 'Wormfront.exe'))) {throw 'Esegui prima build_windows.ps1.'}
 $taskHashes=foreach($taskFile in Get-ChildItem -LiteralPath $taskPortable -Recurse -File | Where-Object Name -ne 'SHA256SUMS.txt') {
  $taskRelative=$taskFile.FullName.Substring($taskPortable.Length).TrimStart([char[]]'\/').Replace('\','/')
  ((Get-FileHash -LiteralPath $taskFile.FullName -Algorithm SHA256).Hash.ToLowerInvariant())+'  '+$taskRelative
 }
 $taskHashes | Set-Content -LiteralPath (Join-Path $taskPortable 'SHA256SUMS.txt') -Encoding utf8
 Compress-Archive -LiteralPath $taskPortable -DestinationPath (Join-Path $taskRoot "dist/$taskName.zip") -Force -CompressionLevel Optimal
-$taskSetup=Join-Path $taskRoot 'dist/Crateri-0.19.1-Windows-Setup'
+$taskSetup=Join-Path $taskRoot 'dist/Wormfront-0.20.0-Windows-Setup'
 New-Item -ItemType Directory $taskSetup -Force | Out-Null
 foreach($taskFile in Get-ChildItem -LiteralPath $taskPortable -Recurse -File) {
  $taskRelative=$taskFile.FullName.Substring($taskPortable.Length).TrimStart([char[]]'\/')

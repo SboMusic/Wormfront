@@ -27,7 +27,7 @@ func run() -> void:
 	assert(game.view_offset == offset, "Camera ferma durante la risoluzione")
 	game.settling = false
 	game.update_view(1)
-	var path := "user://tall.crateri"
+	var path := "user://tall.wormfront"
 	assert(game.TeamSpawns.MapData.save_map(path,game.ground,game.template_spawns).is_empty())
 	var data: Dictionary = game.TeamSpawns.MapData.load_map(path)
 	assert(data["error"].is_empty() and data["image"].get_height() == 1100)

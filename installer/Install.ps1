@@ -1,15 +1,15 @@
-param([string]$InstallDir=(Join-Path $env:LOCALAPPDATA 'SboMusic/Crateri'),[switch]$NoShortcuts)
+param([string]$InstallDir=(Join-Path $env:LOCALAPPDATA 'SboMusic/Wormfront'),[switch]$NoShortcuts)
 $ErrorActionPreference='Stop'
 $taskSource=Join-Path $PSScriptRoot 'payload'
-if(-not (Test-Path -LiteralPath (Join-Path $taskSource 'Crateri.exe')) -or -not (Test-Path -LiteralPath (Join-Path $taskSource 'Crateri.pck'))) {
+if(-not (Test-Path -LiteralPath (Join-Path $taskSource 'Wormfront.exe')) -or -not (Test-Path -LiteralPath (Join-Path $taskSource 'Wormfront.pck'))) {
  Write-Host ''
  if(Test-Path -LiteralPath (Join-Path (Split-Path -Parent $PSScriptRoot) 'project.godot')) {
   Write-Host 'Questa e la cartella dei SORGENTI, non il pacchetto di installazione.'
  } else {
   Write-Host 'Il pacchetto di installazione e incompleto: mancano i file del gioco nella cartella payload.'
  }
- Write-Host 'Per giocare scarica Crateri-0.19.1-Windows-Setup.zip da:'
- Write-Host 'https://github.com/SboMusic/Crateri/releases/tag/v0.19.1'
+ Write-Host 'Per giocare scarica Wormfront-0.20.0-Windows-Setup.zip da:'
+ Write-Host 'https://github.com/SboMusic/Wormfront/releases/tag/v0.20.0'
  Write-Host 'Estrai tutto lo ZIP Setup e avvia Installa.cmd dalla cartella estratta.'
  Write-Host 'Il pulsante verde Code > Download ZIP scarica invece i sorgenti.'
  exit 1
@@ -30,17 +30,19 @@ foreach($taskFile in @('Uninstall.ps1','Disinstalla.cmd')) {
  Copy-Item -LiteralPath (Join-Path $PSScriptRoot $taskFile) -Destination $taskTarget -Force
  $taskFiles+=$taskFile
 }
-$taskManifest=@{publisher='SboMusic';product='Crateri';version='0.19.1';files=$taskFiles}
+$taskManifest=@{publisher='SboMusic';product='Wormfront';version='0.20.0';files=$taskFiles}
 $taskManifest | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $taskTarget 'sbomusic-install.json') -Encoding utf8
 if(-not $NoShortcuts) {
  $taskShell=New-Object -ComObject WScript.Shell
  $taskMenu=Join-Path ([Environment]::GetFolderPath('Programs')) 'SboMusic'
  New-Item -ItemType Directory $taskMenu -Force | Out-Null
- $taskLink=$taskShell.CreateShortcut((Join-Path $taskMenu 'Crateri.lnk'))
- $taskLink.TargetPath=Join-Path $taskTarget 'Crateri.exe'
+ $taskLink=$taskShell.CreateShortcut((Join-Path $taskMenu 'Wormfront.lnk'))
+ $taskLink.TargetPath=Join-Path $taskTarget 'Wormfront.exe'
  $taskLink.WorkingDirectory=$taskTarget
- $taskLink.Description='Crateri - SboMusic'
+ $taskLink.Description='Wormfront - SboMusic'
+ $taskLink.IconLocation=(Join-Path $taskTarget 'Wormfront.exe')+',0'
  $taskLink.Save()
 }
-Write-Output 'Crateri di SboMusic installato. Avvialo dal menu Start o dalla cartella scelta.'
+Write-Output 'Wormfront di SboMusic installato. Avvialo dal menu Start o dalla cartella scelta.'
+
 

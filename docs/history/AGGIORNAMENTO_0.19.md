@@ -1,4 +1,4 @@
-# Crateri 0.19 - mappe tematiche, sfondi e nuove armi
+# Wormfront 0.19 - mappe tematiche, sfondi e nuove armi
 
 ## Mappe: intervento prioritario
 
@@ -46,6 +46,6 @@ ancora telecomando, teletrasporto, incursioni o corpo a corpo.
 La fonte richiesta comprende armi di diversi capitoli. Questa versione NON
 contiene tutte le armi di Worms: e un primo ampliamento con meccaniche vere.
 Le altre famiglie da realizzare sono in ARSENALE_ROADMAP.md. Nomi, grafica,
-valori e bilanciamento di Crateri sono originali; non e una replica esatta.
+valori e bilanciamento di Wormfront sono originali; non e una replica esatta.
 
 Verifiche: verifiche/ESITO_0.19.md. Versioni precedenti conservate.

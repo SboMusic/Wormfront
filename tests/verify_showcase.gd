@@ -15,7 +15,7 @@ func capture() -> void:
 	root.add_child(canvas)
 	canvas.draw.connect(func():
 		canvas.draw_rect(Rect2(0, 0, 1100, 700), Color("102035"))
-		canvas.draw_string(ThemeDB.fallback_font, Vector2(20, 30), "CRATERI 0.13 · SEI GEOMETRIE, VARIANTI CASUALI", HORIZONTAL_ALIGNMENT_LEFT, -1, 24, Color("61d9df"))
+		canvas.draw_string(ThemeDB.fallback_font, Vector2(20, 30), "WORMFRONT 0.13 · SEI GEOMETRIE, VARIANTI CASUALI", HORIZONTAL_ALIGNMENT_LEFT, -1, 24, Color("61d9df"))
 		for i in range(6):
 			var origin := Vector2(20 + (i % 2) * 545, 58 + floori(i / 2.0) * 212)
 			canvas.draw_rect(Rect2(origin, Vector2(520, 196)), Color("192c42"))

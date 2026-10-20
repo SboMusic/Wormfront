@@ -29,7 +29,7 @@ Le scelte di gioco vengono definite e riviste insieme all'utente; SboMusic prepa
 
 ## Decisioni ancora aperte
 
-Stile visivo finale, nomi e personalizzazione delle squadre, inventario armi, vento e acqua. Il salto è già presente; vita, turni e numero di personaggi si impostano dal menu o dall'editor. I formati restano `.crateri` versione 1 per le mappe, `.arsenale` versione 1 per due armi e regole e `.crateripack` versione 1 per una creazione completa autonoma. I vecchi file senza `team_size` usano una squadra da uno. La distribuzione iniziale è uno ZIP per Windows x64, senza installazione di Godot. Nuova/Duplica/Elimina armi restano rimandati. Raccolta online e multiplayer in rete sono decisioni separate. Restano grafica e audio.
+Stile visivo finale, nomi e personalizzazione delle squadre, inventario armi, vento e acqua. Il salto è già presente; vita, turni e numero di personaggi si impostano dal menu o dall'editor. I formati restano `.wormfront` versione 1 per le mappe, `.arsenale` versione 1 per due armi e regole e `.wormfrontpack` versione 1 per una creazione completa autonoma. I vecchi file senza `team_size` usano una squadra da uno. La distribuzione iniziale è uno ZIP per Windows x64, senza installazione di Godot. Nuova/Duplica/Elimina armi restano rimandati. Raccolta online e multiplayer in rete sono decisioni separate. Restano grafica e audio.
 
 ## Aggiornamento 0.10
 

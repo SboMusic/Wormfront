@@ -1,10 +1,10 @@
-# Aggiornamento Crateri 0.18 - prima scena del restyling
+# Aggiornamento Wormfront 0.18 - prima scena del restyling
 
 19 ottobre 2026. Versione giocabile Windows con la prima direzione artistica.
 
 - Sfondo illustrato al crepuscolo, attenuato per distinguere le strutture.
 - Terreno dipinto con rocce e terra, bordo erboso, ombre sui lati e sotto.
-  Sagoma, collisioni e crateri continuano a usare la maschera originale.
+  Sagoma, collisioni e wormfront continuano a usare la maschera originale.
 - Verme cartoon dipinto, specchiato secondo la direzione, respiro e movimento
   procedurali, colori di squadra e indicazione della vita conservati.
 - Sei illustrazioni di famiglie di armi condivise fra icone e arma equipaggiata;

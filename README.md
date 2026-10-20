@@ -1,9 +1,11 @@
-# Crateri
+# Wormfront
+
+<img src="assets/icon.png" alt="Icona Wormfront" width="160">
 
 **Gioco di artiglieria 2D a turni per Windows, di SboMusic.**
-Versione pubblicabile: **0.19.1** · Godot **4.5.1 Standard** · GDScript.
+Versione: **0.20.0** · Godot **4.5.1 Standard** · GDScript.
 
-**[SCARICA IL GIOCO PER WINDOWS (ZIP di installazione)](https://github.com/SboMusic/Crateri/releases/download/v0.19.1/Crateri-0.19.1-Windows-Setup.zip)**
+**[SCARICA IL GIOCO PER WINDOWS (ZIP di installazione)](https://github.com/SboMusic/Wormfront/releases/download/v0.20.0/Wormfront-0.20.0-Windows-Setup.zip)**
 
 Estrai tutto lo ZIP e apri `Installa.cmd`. Il pulsante verde **Code > Download ZIP**
 scarica i **sorgenti per sviluppatori**, che non contengono il gioco compilato.
@@ -20,11 +22,11 @@ modificabili: non e una licenza open source senza restrizioni commerciali.
 
 Dalla sezione **Releases** scarica uno di questi pacchetti:
 
-- **[Crateri-0.19.1-Windows-Setup.zip](https://github.com/SboMusic/Crateri/releases/download/v0.19.1/Crateri-0.19.1-Windows-Setup.zip)**: estrai tutto e apri `Installa.cmd`.
+- **[Wormfront-0.20.0-Windows-Setup.zip](https://github.com/SboMusic/Wormfront/releases/download/v0.20.0/Wormfront-0.20.0-Windows-Setup.zip)**: estrai tutto e apri `Installa.cmd`.
   Installa per il solo utente Windows, senza diritti di amministratore,
   e aggiunge il collegamento nel menu Start sotto SboMusic.
-- **Crateri-0.19.1-Windows-x64.zip**: versione portatile. Estrai tutta la
-  cartella e apri `Crateri.exe`, mantenendo accanto `Crateri.pck`.
+- **Wormfront-0.20.0-Windows-x64.zip**: versione portatile. Estrai tutta la
+  cartella e apri `Wormfront.exe`, mantenendo accanto `Wormfront.pck`.
 
 Non occorre installare Godot per giocare. Le distribuzioni non includono
 salvataggi dell'autore, credenziali o configurazioni personali.
@@ -97,9 +99,10 @@ di Worms. L'IA usa il pianificatore balistico e delle armi istantanee;
 non pianifica ancora telecomando, teletrasporto, incursioni e corpo a corpo.
 La grafica usa immagini originali realizzate anche con assistenza AI.
 
-Crateri e indipendente e non e affiliato a Team17. Il riferimento alle
+Wormfront e indipendente e non e affiliato a Team17. Il riferimento alle
 meccaniche di altri giochi non implica condivisione dei loro asset o marchi.
 
 **Autore: SboMusic.** [Licenza non commerciale](LICENSE).
 Godot e le sue dipendenze conservano le [licenze originali](licenses/).
+
 

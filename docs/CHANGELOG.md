@@ -1,6 +1,14 @@
 # Cronologia
 
-## 0.20.0 - preparazione pubblica
+## 0.20.0 - nuova identita Wormfront
+
+- Nuovo nome in gioco, menu, repository, documentazione e installer.
+- Nuova icona con vermi: PNG e ICO a sei dimensioni, inserita nell'eseguibile.
+- Wormfront.exe, nuovi pacchetti e cartella dati utente Wormfront.
+- Nuovi salvataggi .wormfront e .wormfrontpack; lettura dei formati precedenti.
+- Screenshot aggiornati; nove suite di test e installer verificati.
+
+## 0.19.1 - preparazione pubblica
 
 - Autore e attribuzione di progetto: SboMusic.
 - Sorgenti in src, definizioni in data, test e strumenti separati.
@@ -23,4 +31,5 @@
 - [0.13 - generazione e audio](history/AGGIORNAMENTO_0.13.md)
 - [0.12 - comandi e anteprime](history/AGGIORNAMENTO_0.12.md)
 - [0.11 - espansione del prototipo](history/AGGIORNAMENTO_0.11.md)
+
 

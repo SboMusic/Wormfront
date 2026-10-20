@@ -3,6 +3,12 @@
 **Gioco di artiglieria 2D a turni per Windows, di SboMusic.**
 Versione pubblicabile: **0.19.1** · Godot **4.5.1 Standard** · GDScript.
 
+**[SCARICA IL GIOCO PER WINDOWS (ZIP di installazione)](https://github.com/SboMusic/Crateri/releases/download/v0.19.1/Crateri-0.19.1-Windows-Setup.zip)**
+
+Estrai tutto lo ZIP e apri `Installa.cmd`. Il pulsante verde **Code > Download ZIP**
+scarica i **sorgenti per sviluppatori**, che non contengono il gioco compilato.
+La cartella `installer/` dei sorgenti serve a costruire le distribuzioni.
+
 ![Cittadelle distruttibili](docs/screenshots/castello.png)
 
 Due squadre di vermi, terreno distruttibile, 36 armi, IA a tre difficolta,
@@ -14,7 +20,7 @@ modificabili: non e una licenza open source senza restrizioni commerciali.
 
 Dalla sezione **Releases** scarica uno di questi pacchetti:
 
-- **Crateri-0.19.1-Windows-Setup.zip**: estrai tutto e apri `Installa.cmd`.
+- **[Crateri-0.19.1-Windows-Setup.zip](https://github.com/SboMusic/Crateri/releases/download/v0.19.1/Crateri-0.19.1-Windows-Setup.zip)**: estrai tutto e apri `Installa.cmd`.
   Installa per il solo utente Windows, senza diritti di amministratore,
   e aggiunge il collegamento nel menu Start sotto SboMusic.
 - **Crateri-0.19.1-Windows-x64.zip**: versione portatile. Estrai tutta la
@@ -96,3 +102,4 @@ meccaniche di altri giochi non implica condivisione dei loro asset o marchi.
 
 **Autore: SboMusic.** [Licenza non commerciale](LICENSE).
 Godot e le sue dipendenze conservano le [licenze originali](licenses/).
+

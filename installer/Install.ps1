@@ -1,7 +1,19 @@
 param([string]$InstallDir=(Join-Path $env:LOCALAPPDATA 'SboMusic/Crateri'),[switch]$NoShortcuts)
 $ErrorActionPreference='Stop'
 $taskSource=Join-Path $PSScriptRoot 'payload'
-if(-not (Test-Path -LiteralPath (Join-Path $taskSource 'Crateri.exe')) -or -not (Test-Path -LiteralPath (Join-Path $taskSource 'Crateri.pck'))) {throw 'Estrai l''intero ZIP prima di installare.'}
+if(-not (Test-Path -LiteralPath (Join-Path $taskSource 'Crateri.exe')) -or -not (Test-Path -LiteralPath (Join-Path $taskSource 'Crateri.pck'))) {
+ Write-Host ''
+ if(Test-Path -LiteralPath (Join-Path (Split-Path -Parent $PSScriptRoot) 'project.godot')) {
+  Write-Host 'Questa e la cartella dei SORGENTI, non il pacchetto di installazione.'
+ } else {
+  Write-Host 'Il pacchetto di installazione e incompleto: mancano i file del gioco nella cartella payload.'
+ }
+ Write-Host 'Per giocare scarica Crateri-0.19.1-Windows-Setup.zip da:'
+ Write-Host 'https://github.com/SboMusic/Crateri/releases/tag/v0.19.1'
+ Write-Host 'Estrai tutto lo ZIP Setup e avvia Installa.cmd dalla cartella estratta.'
+ Write-Host 'Il pulsante verde Code > Download ZIP scarica invece i sorgenti.'
+ exit 1
+}
 $taskTarget=[IO.Path]::GetFullPath($InstallDir)
 $taskSourceFull=[IO.Path]::GetFullPath($taskSource)
 if($taskTarget.StartsWith($taskSourceFull,[StringComparison]::OrdinalIgnoreCase)) {throw 'Scegli una cartella esterna ai file di installazione.'}
@@ -31,3 +43,4 @@ if(-not $NoShortcuts) {
  $taskLink.Save()
 }
 Write-Output 'Crateri di SboMusic installato. Avvialo dal menu Start o dalla cartella scelta.'
+
